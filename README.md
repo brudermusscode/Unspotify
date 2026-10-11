@@ -1,13 +1,13 @@
 > [!CAUTION]
 > Preview-Version! An vielen Stellen wird's vermutlich Fehler geben. Nur für Linux.
 
-# Musik, Bruder! - Dein Freund für deine Musik
+# Unspotify now!
 
-**Musik, Bruder!** ist dein bester Freund, wenn du selbst einiges an lokaler
-Musik besitzt und keine Lust mehr hast, Spotify jeden Monat 10
+**Unspotify** ist dein bester Freund, wenn du selbst einiges an lokaler
+Musik besitzt und keine Lust mehr hast, Spotify jeden Monat 10+
 Euro zu spendieren. Hiermit kannst du deine Musik, eigene Bilder
-für Alben, Künstler und sogar Videos (wie bei Spotify) zu
-einzelnen Tracks hochladen (WOW!)!
+für Alben, Künstler, Videos und Lyrics (alles wie bei Spotify) zu
+einzelnen Tracks hochladen (WOW!)!1
 
 Eine kleine Preview gefällig? Bitteschön:
 
