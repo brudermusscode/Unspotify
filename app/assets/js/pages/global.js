@@ -2,6 +2,7 @@ import * as Prototype from "../abstract/prototypes";
 import * as Frontend from "../framework/frontend";
 import * as Cookie from "../framework/cookie";
 import * as Lyrics from "../elements/lyrics";
+import * as Player from "../elements/player";
 
 /**
  * Set some defaults for future ajax requests.
@@ -38,10 +39,13 @@ export const open_bruder = (search) => {
   if (!search_input || bruder.hasAttribute("active")) return;
 
   Lyrics.close_fullscreen();
-
+  Player.shrink();
   bruder.activate();
-  search_input.focus();
-  search_input.value = search !== undefined ? search : "";
+
+  setTimeout(() => {
+    search_input.focus();
+    search_input.value = search !== undefined ? search : "";
+  }, 30);
 };
 
 export const close_bruder = () => {
@@ -49,6 +53,8 @@ export const close_bruder = () => {
   let player = document.find("player");
 
   if (!bruder || !bruder.hasAttribute("active")) return;
+
+  if (!Player.shrinked_due_to_window_scrolled()) Player.extend();
 
   bruder.deactivate();
   player.removeAttribute("style");
@@ -261,14 +267,8 @@ $(function () {
     bulk_close_contextmenu();
     close_bruder();
 
-    if (
-      document.body.scrollHeight - window.scrollY - window.innerHeight <=
-      60
-    ) {
-      document.find("player-outer").setAttribute("not-showing", true);
-    } else {
-      document.find("player-outer").removeAttribute("not-showing");
-    }
+    if (Player.shrinked_due_to_window_scrolled()) Player.shrink();
+    else Player.extend();
   });
 
   $(document).on("click", function (e) {

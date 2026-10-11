@@ -57,6 +57,7 @@ $(function () {
           url: data_string,
           success: function (data) {
             tracks_container.innerHTML = data.data;
+            Frontend.reload_images();
           },
         });
       }, 20);

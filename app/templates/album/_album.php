@@ -1,4 +1,14 @@
-<album data-id="<?= $Album->id ?>" has-menu>
+<?php
+
+/**
+ * @var ?bool $full_width
+ */
+
+$full_width ??= false;
+
+?>
+
+<album data-id="<?= $Album->id ?>" has-menu <?= $full_width ? "w100" : "" ?>>
   <?php
 
   /**

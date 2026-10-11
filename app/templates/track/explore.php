@@ -58,22 +58,46 @@ $Results = collect()
   ->merge($Albums->sortByDesc("created_at"))
   ->merge($Playlists->sortByDesc("created_at"));
 
-ob_start();
+ob_start(); ?>
 
-foreach ($Results as $R) :
-  if ($R instanceof Track) :
-    $Track = $R;
-    include TEMPLATE . "/track/_track-preview.php";
-  elseif ($R instanceof Album) :
-    $Album = $R;
-    include TEMPLATE . "/album/_album.php";
-  elseif ($R instanceof Playlist) :
-    $Playlist = $R;
-    echo "Nothing";
-  elseif ($R instanceof Artist) :
-    $Artist = $R;
-    include TEMPLATE . "/artist/_artist-preview.php";
-  endif;
-endforeach;
+<?php if ($Tracks->count()) : ?>
+  <overflow-container tracks flone>
+    <div fl jucstart z mb12 style="position:sticky;top:0px;">
+      <p window-light background=primary color=primary-text rounded=mid pinline14 pblock8 text smol ttup semibold>Songs</p>
+    </div>
+    <div tracks play-only>
+      <?php foreach ($Tracks as $Track) :
+        include TEMPLATE . "/track/_track-preview.php";
+      endforeach; ?>
+    </div>
+  </overflow-container>
+<?php endif; ?>
+
+<?php if ($Artists->count()) : ?>
+  <overflow-container artists flone posrel>
+    <div fl jucstart z mb12 style="position:sticky;top:0px;">
+      <p window-light background=secondary color=secondary-text rounded=mid pinline14 pblock8 text smol ttup semibold>Künstler</p>
+    </div>
+    <?php foreach ($Artists as $Artist) :
+      include TEMPLATE . "/artist/_artist-preview.php";
+    endforeach; ?>
+  </overflow-container>
+<?php endif; ?>
+
+<?php if ($Albums->count()) : ?>
+  <overflow-container releases flone posrel pinline8>
+    <div fl jucstart z mb12 style="position:sticky;top:0px;">
+      <p window-light background=tertiary color=tertiary-text rounded=mid pinline14 pblock8 text smol ttup semibold>Releases</p>
+    </div>
+    <div fl fldircol gap=smol>
+      <?php foreach ($Albums as $Album) :
+        $full_width = true;
+        include TEMPLATE . "/album/_album.php";
+      endforeach; ?>
+    </div>
+  </overflow-container>
+<?php endif; ?>
+
+<?php
 
 die($Request->success("Deine Tracks Bruder ;)", data: ob_get_clean()));

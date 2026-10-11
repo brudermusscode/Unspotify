@@ -819,6 +819,20 @@ export const track = () => {
   return __player.Track.id;
 };
 
+export const shrink = () => {
+  document
+    .find("player-contain player-outer")
+    .setAttribute("not-showing", true);
+};
+
+export const extend = () => {
+  document.find("player-contain player-outer").removeAttribute("not-showing");
+};
+
+export const shrinked_due_to_window_scrolled = () => {
+  return document.body.scrollHeight - window.scrollY - window.innerHeight <= 60;
+};
+
 document.addEventListener("DOMContentLoaded", async function () {
   // Init the app with player being not active.
   localStorage.setItem("__player_active", 0);

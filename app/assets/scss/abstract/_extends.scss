@@ -1,6 +1,21 @@
 @use "./var.sizes" as *;
 @use "./var.colors" as *;
 
+.fullscreen-window {
+  position: fixed;
+  z-index: 102;
+  top: $main-distance-smol;
+  left: calc($header-width + $main-distance-smol);
+  width: calc(100vw - $header-width - 2 * $main-distance-smol);
+  height: $fullscreen-height;
+  box-shadow: var(--mio-theme-elevation-3);
+
+  @media screen and (max-width: $laptop-max-width) {
+    left: calc($header-width-smol + $main-distance-smol);
+    width: calc(100vw - $header-width-smol - 2 * $main-distance-smol);
+  }
+}
+
 $window-blur: blur(18px);
 $window-overflow-content: 12px;
 $window-border-radius: 42px;

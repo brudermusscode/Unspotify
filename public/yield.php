@@ -85,15 +85,13 @@ $canonical = HOME_URL . ($canonical[0] ?? "");
 
     ?>
 
-    <search-tools>
-      <input autofocus floating mb24 data-action="<?= $track_explore_action ?>" placeholder="Titel, Playlisten »   « Künstler, Alben" />
+    <input autofocus data-action="<?= $track_explore_action ?>" placeholder="Wonach suchst du?" />
 
-      <div fl gap=smol+ alistart jucstretch>
-        <div right-content data-react="<?= $track_explore_action ?>" tracks play-only flone>
-          <p text smol bold ttup tac slight>Tipp was ein, um zu suchen</p>
-        </div>
-      </div>
-    </search-tools>
+    <div fl alistart posrel gap flex-wrap=wrap
+      data-react="<?= $track_explore_action ?>"
+      style=height:100%;width:100%;>
+      <!--- content loaded by typing something --->
+    </div>
   </bruder>
 
   <?php
