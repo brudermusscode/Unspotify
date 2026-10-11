@@ -3,10 +3,9 @@
 @use "../abstract" as *;
 
 library {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: $gap-smol;
+  gap: $gap-smol-plus;
 
   &[view="grid"] {
     bookmarks {
@@ -89,7 +88,7 @@ library {
       max-width: 100%;
 
       moption {
-        padding: 2px;
+        padding: 2px 6px 2px 3px;
         padding-right: 16px;
         border-radius: 16px;
         display: flex;
@@ -128,23 +127,16 @@ library {
     display: flex;
     flex-direction: column;
     gap: $gap-smoler;
-    overflow: auto;
-    max-height: calc(
-      100vh - $main-distance - (4 * $main-distance-smol) - $mbutton-smol-size -
-        $gap-smol + 2px
-    );
-
-    @media screen and (max-width: $laptop-max-width) {
-      max-height: calc(
-        100vh - $main-distance - (2 * $main-distance-smol) -
-          $mbutton-smol-size - $gap-smol
-      );
-    }
 
     a {
       &[active] {
         moption {
-          background: $slighter-light;
+          @extend .window-light;
+
+          &[album],
+          &[playlist] {
+            border-radius: 16px;
+          }
 
           [playing] {
             display: flex;
@@ -164,6 +156,8 @@ library {
       }
 
       moption {
+        border-block: 1px solid transparent;
+
         &:hover {
           background: $slighterer-light;
         }
@@ -218,8 +212,7 @@ library {
             left: 0;
             height: 100%;
             width: 100%;
-            border-radius: 13px;
-            border: 1px solid $slight-light;
+            border-radius: 12px;
             overflow: hidden;
           }
 
@@ -330,12 +323,46 @@ library {
     }
   }
 
+  &[scrolled="true"] {
+    library-header mbutton {
+      @extend .window-light;
+      transition:
+        all 0.1s linear,
+        border 0s;
+    }
+  }
+
+  library-header {
+    border-block: 1px solid transparent;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
   [reorder-library] {
     display: none !important;
   }
 
   library-entry {
     position: relative;
+
+    &:first-of-type {
+      [edit-actions] {
+        [move-up] {
+          pointer-events: none;
+          opacity: 0.2;
+        }
+      }
+    }
+
+    &:last-of-type {
+      [edit-actions] {
+        [move-down] {
+          pointer-events: none;
+          opacity: 0.2;
+        }
+      }
+    }
 
     [edit-actions] {
       position: absolute;
@@ -349,7 +376,7 @@ library {
       background: #2e1f3a;
       background: linear-gradient(
         270deg,
-        rgba(46, 31, 58, 1) 78%,
+        rgba(46, 31, 58, 0.4) 78%,
         rgba(46, 31, 58, 0) 100%
       );
       padding: 12px;

@@ -1,6 +1,12 @@
 import * as Frontend from "../framework/frontend";
 
 $(function () {
+  $("sidebar[left]").on("scroll", function (e) {
+    let lib = this.find("library");
+    if (this.scrollTop > 10) lib.setAttribute("scrolled", true);
+    else lib.removeAttribute("scrolled");
+  });
+
   $(document).on("click", "[data-action='library:reorder']", function (e) {
     let library = this.closest("library");
 

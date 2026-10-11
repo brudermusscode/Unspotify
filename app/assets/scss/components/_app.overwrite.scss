@@ -144,12 +144,14 @@ main {
   margin-left: $header-width;
   padding-top: $main-distance;
   padding-bottom: calc(3 * $main-distance);
-  padding-inline: calc($sidebar-width + $main-distance * 2);
+  padding-left: calc($sidebar-width + $main-distance);
+  padding-right: calc($sidebar-width + $main-distance * 2);
 
   @media screen and (max-width: $laptop-max-width) {
     margin-left: $header-width-smol;
     padding-top: $main-distance-smol;
-    padding-inline: calc($sidebar-laptop-width + $main-distance-smol * 2);
+    padding-left: calc($sidebar-laptop-width + $main-distance-smol);
+    padding-right: calc($sidebar-laptop-width + $main-distance-smol * 2);
   }
 
   @media screen and (max-width: $hide-sidebar-max-width) {
@@ -221,7 +223,39 @@ sort {
     top: $main-distance-smol;
   }
 
-  mbutton {
+  &[scrolled="true"] {
+    a {
+      @extend .window-light;
+    }
+  }
+
+  a {
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: $gap-smol;
+    padding: 4px 16px 4px 10px;
+    border: 2px solid transparent;
+    border-radius: 18px;
+
+    &:hover {
+      background: $slight-light;
+      border: 2px solid transparent;
+    }
+
+    mi {
+      font-size: $font-size-midler;
+    }
+
+    &[active] {
+      @extend .window-light;
+      font-weight: 600;
+      color: $tertiary;
+      pointer-events: none;
+    }
+
     @media screen and (max-width: $laptop-max-width) {
       padding-inline: 12px !important;
     }

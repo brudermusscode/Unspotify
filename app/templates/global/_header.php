@@ -7,9 +7,11 @@ use Bruder\Application\Cookie;
 <time-label background=light color=dark text smol bold pinline10 pblock6 rounded=smolplus elevated=wide></time-label>
 
 <header fl fldircol jucstretch alic gap>
-  <picture mid>
-    <img src="/logo.png" />
-  </picture>
+  <a href="/">
+    <picture mid>
+      <img src="/logo.png" />
+    </picture>
+  </a>
 
   <div fl fldircol alic jucc gap=smol flone>
     <a circled href="/">

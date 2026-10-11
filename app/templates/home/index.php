@@ -22,56 +22,38 @@ include TEMPLATE . "/global/_current-playlist.php";
 ?>
 
 <div fl fldircol gap=smol+>
-  <sort fl alic jucsb gap=smoler>
-    <a href="/home/latest" flone>
-      <mbutton material has-icon=left has-tooltip=bottom
-        <?= $sort === "latest" || !$sort ? "active" : "" ?>>
-        <mi>hourglass_arrow_down</mi>
-        <span hide-tablet>Neuste</span>
-        <div ttooltip>
-          Neuste
-        </div>
-      </mbutton>
+  <sort fl alic jucsb gap=smoler scroll-manipulated>
+    <a href="/home/latest" flone has-tooltip=bottom
+      <?= $sort === "latest" || !$sort ? "active" : "" ?>>
+      <mi>hourglass_arrow_down</mi>
+      <span hide-tablet>Neuste</span>
+      <div ttooltip>
+        Neuste
+      </div>
     </a>
-    <a href="/home/oldest" flone>
-      <mbutton material has-icon=left has-tooltip=bottom
-        <?= $sort === "oldest" ? "active" : "" ?>>
-        <mi>hourglass_arrow_up</mi>
-        <span hide-tablet>Älteste</span>
-        <div ttooltip>
-          Älteste
-        </div>
-      </mbutton>
+    <a href="/home/oldest" flone has-tooltip=bottom
+      <?= $sort === "oldest" ? "active" : "" ?>>
+      <mi>hourglass_arrow_up</mi>
+      <span hide-tablet>Älteste</span>
+      <div ttooltip>Älteste</div>
     </a>
-    <a href="/home/title" flone>
-      <mbutton material has-icon=left has-tooltip=bottom
-        <?= $sort === "title" ? "active" : "" ?>>
-        <mi>sort_by_alpha</mi>
-        <span hide-tablet>Titel</span>
-        <div ttooltip>
-          Titel
-        </div>
-      </mbutton>
+    <a href="/home/title" flone has-tooltip=bottom
+      <?= $sort === "title" ? "active" : "" ?>>
+      <mi>sort_by_alpha</mi>
+      <span hide-tablet>Titel</span>
+      <div ttooltip>Titel</div>
     </a>
-    <a href="/home/artist" flone>
-      <mbutton material has-icon=left has-tooltip=bottom
-        <?= $sort === "artist" ? "active" : "" ?>>
-        <mi>artist</mi>
-        <span hide-tablet>Artist</span>
-        <div ttooltip>
-          Artist
-        </div>
-      </mbutton>
+    <a href="/home/artist" flone has-tooltip=bottom
+      <?= $sort === "artist" ? "active" : "" ?>>
+      <mi>artist</mi>
+      <span hide-tablet>Artist</span>
+      <div ttooltip>Artist</div>
     </a>
-    <a href="/home/listens" flone>
-      <mbutton material has-icon=left has-tooltip=bottom
-        <?= $sort === "listens" ? "active" : "" ?>>
-        <mi>earbud_right</mi>
-        <span hide-tablet>Liebste</span>
-        <div ttooltip>
-          Meist gehört
-        </div>
-      </mbutton>
+    <a href="/home/listens" flone has-tooltip=bottom
+      <?= $sort === "listens" ? "active" : "" ?>>
+      <mi>earbud_right</mi>
+      <span hide-tablet>Liebste</span>
+      <div ttooltip>Meist gehört</div>
     </a>
   </sort>
 
