@@ -171,7 +171,7 @@ top-banner {
   display: block;
   position: fixed;
   border-radius: 30px;
-  width: calc(100vw - $sidebar-width * 2 - 4 * $main-distance - $header-width);
+  width: calc(100vw - $sidebar-width * 2 - 3 * $main-distance - $header-width);
   padding: $cover-from-border-padding;
   z-index: 10;
   transition: $trans-cubic;
@@ -179,7 +179,7 @@ top-banner {
   @media screen and (max-width: $laptop-max-width) {
     top: $main-distance-smol;
     width: calc(
-      100vw - $sidebar-laptop-width * 2 - 4 * $main-distance-smol -
+      100vw - $sidebar-laptop-width * 2 - 3 * $main-distance-smol -
         $header-width-smol
     );
   }

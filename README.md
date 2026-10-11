@@ -11,7 +11,7 @@ einzelnen Tracks hochladen (WOW!)!1
 
 Eine kleine Preview gefällig? Bitteschön:
 
-[![Sehr gut und schön](https://i.ibb.co/QvjjN3xp/Pasted-image-2.png)](https://i.ibb.co/QvjjN3xp/Pasted-image-2.png)
+[![Sehr gut und schön](https://i.ibb.co/PGmK7YJR/Pasted-image-3.png)](https://i.ibb.co/PGmK7YJR/Pasted-image-3.png)
 
 <br>
 
