@@ -398,7 +398,7 @@ class Track extends Bruder
           "release_year" => $year
         ])->first();
 
-        if (!$Album)
+        if (!$Album && $album_name)
           $Album = Album::create([
             "name" => $album_name,
             "release_year" => $year,
