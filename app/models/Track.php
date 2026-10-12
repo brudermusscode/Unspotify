@@ -351,10 +351,7 @@ class Track extends Bruder
           "length_seconds" => $file_analyzed["playtime_seconds"],
         ];
 
-        /**
-         * All done! We can delete the temporary file and close the
-         * original source file.
-         */
+        # Done! We can delete the temporary file and close the original source file.
         unlink($temp_file_path);
         fclose($file);
 
@@ -418,10 +415,8 @@ class Track extends Bruder
           $Track->artist_id = $Artist->id;
         }
 
-        # # Save it!
         $Track->save();
 
-        # Attach the Track to the album.
         $Album?->tracks()->attach($Track);
 
         file_put_contents($log_path, "»DONE«" . PHP_EOL, FILE_APPEND | LOCK_EX);
@@ -429,13 +424,9 @@ class Track extends Bruder
         $new++;
       endforeach;
 
-      // # Commit all changes!
       $Object->db_commit();
 
-      /**
-       * Append the number of newly synchronized tracks to the
-       * data return object.
-       */
+      # Append the number of newly synchronized tracks to the data return object.
       $error["new"] = $new;
 
       return $Request->success(
