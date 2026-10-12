@@ -238,7 +238,12 @@ class Album extends Bruder
    */
   public function tracks()
   {
-    return $this->belongsToMany(Track::class, "album_tracks");
+    return $this->belongsToMany(
+      Track::class,
+      "album_tracks",
+      "album_id",
+      "track_id",
+    );
   }
 
   /**

@@ -351,7 +351,6 @@ class Track extends Bruder
           "length_seconds" => $file_analyzed["playtime_seconds"],
         ];
 
-
         /**
          * All done! We can delete the temporary file and close the
          * original source file.
@@ -366,7 +365,9 @@ class Track extends Bruder
         $Track = new Track;
 
         // Serialize the year, as it might be not a proper year.
-        $year = $return_data["info"]["year"][0] ?? null;
+        $year = $return_data["info"]["date"][0]
+          ?? $return_data["info"]["year"][0]
+          ?? null;
         $year = !$year || !ctype_digit($year) ||
           strlen((string) $year) < 4 || strlen((string) $year) > 4
           ? null : $year;
@@ -389,6 +390,19 @@ class Track extends Bruder
         //   $Track->created_at = $created_at;
         //   $Track->save();
 
+        $album_name = $return_data["info"]["album"][0] ?? null;
+
+        # Create a new album or add to an existing one.
+        $Album = Album::where([
+          "name" => $album_name,
+          "release_year" => $year
+        ])->first();
+
+        if (!$Album)
+          $Album = Album::create([
+            "name" => $album_name,
+            "release_year" => $year,
+          ]);
 
         /**
          * Get the Artist or create a new one.
@@ -404,10 +418,11 @@ class Track extends Bruder
           $Track->artist_id = $Artist->id;
         }
 
-        /**
-         * # Save it!
-         */
+        # # Save it!
         $Track->save();
+
+        # Attach the Track to the album.
+        $Album?->tracks()->attach($Track);
 
         file_put_contents($log_path, "»DONE«" . PHP_EOL, FILE_APPEND | LOCK_EX);
 
